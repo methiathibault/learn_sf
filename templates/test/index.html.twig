@@ -4,40 +4,42 @@
 
 {% block body %}
     <h1>{{controller_name}}</h1>
-    <table>
-        <tr>
-            <td>id</td>
-            <td>Fruits</td>
-            <td>Couleurs</td>
-            <td>Pays</td>
-            <td>Poids</td>
-            <td>Gout</td>
-        </tr>
-        <tr>
-            {% for fruit in fruits %}
-                <tr>
-                    <td>{{fruit.id}}</td>
-                    <td>{{fruit.name}}</td>
-                    <td>
-                        <ul>
-                    {% for color in fruit.colors %}
-                            <li style='color: {{color.hexcode}}'>{{color.name}}</li>
-                    {% endfor %}
-                        </ul>
-                    </td>
-                    <td>{{fruit.country}}</td>
-                    <td>{{fruit.weight}}</td>
-                    <td>{{fruit.gout.name}}</td>
-                    <td>
-                        <form action='/test/delete/{{fruit.id}}'>
-                            <input type='submit' value='Delete'/>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tr>
-    </table>
-    <form action='test/deleteall'>
-        <input type='submit' value='Delete All'/>
-    </form>
+    <div class='container'>
+        <table class='table table-bordered border-dark'>
+            <tr>
+                <td>Fruits</td>
+                <td>Couleurs</td>
+                <td>Pays</td>
+                <td>Poids</td>
+                <td>Gout</td>
+                <td>Action</td>
+            </tr>
+                {% for fruit in fruits %}
+                    <tr>
+                        <td>{{fruit.name}}</td>
+                        <td>
+                            <ul>
+                        {% for color in fruit.colors %}
+                                <li style='color: {{color.hexcode}}'>{{color.name}}</li>
+                        {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{fruit.country}}</td>
+                        <td>{{fruit.weight}}</td>
+                        <td>{{fruit.gout.name}}</td>
+                        <td>
+                            <form action='/test/delete/{{fruit.id}}'>
+                                <input type='submit' value='Delete'/>
+                            </form>
+                            <form action='/test/update/{{fruit.id}}'>
+                                <input type='submit' value='update'/>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </table>
+        <form action='test/deleteall'>
+            <input type='submit' value='Delete All'/>
+        </form>
+    </div>
 {% endblock %}

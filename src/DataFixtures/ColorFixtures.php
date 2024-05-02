@@ -13,7 +13,7 @@ class ColorFixtures extends Fixture
         $colors = ['rouge','bleu','vert','violet','blanc',
                     'orange','rose','marron','jaune','noir'];
 
-        $hexcodes = ['#FFOOOO', '#OOOOFF', '#OOFFOO', '#7F00FF', '#FFFFFF',
+        $hexcodes = ['#FF0000', '#0000FF', '#00FF00', '#7F00FF', '#FFFFFF',
                     '#FFA500','#FF007F','#582900','#FFFF00','#000000'];
                     
         for ($i=0; $i < 10; $i++) { 
@@ -22,8 +22,6 @@ class ColorFixtures extends Fixture
             $color->setHexcode($hexcodes[$i]);
             $manager->persist($color);
         }
-
-
         $manager->flush();
     }
 }
